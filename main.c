@@ -28,7 +28,7 @@ int main ()
 
 
     Object * o = new_noargs(Object);
-    printf("Object %s\n", o->_->toString(o));
+    printf("Object %s\n", o->_m->toString(o));
     printf("Object %s\n", to_string(o));
     printf("Object %s\n", mcall_noargs(o, toString));
     delete( o );
