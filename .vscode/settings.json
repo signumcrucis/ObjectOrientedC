@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "stdio2.h": "c",
+        "class.h": "c",
+        "string.h": "c",
+        "person.h": "c",
+        "LinkedList.h": "c",
+        "Bool.h": "c"
+    },
+    "files.exclude": {
+        "**/*.gch": true,
+        "*.exe": true
+    }
+}
