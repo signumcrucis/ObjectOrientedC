@@ -7,11 +7,14 @@ string Object_toString(Object * this)
 {
     return "Object";
 }
-struct Methods_Object methods_Object = {.toString = &Object_toString};
 
+struct Methods_Object methods_Object = {
+    .toString = &Object_toString,
+    .destruct = &Object_destruct,
+};
 Object * Object_construct(Object * this)
 {
-    this->m = &methods_Object;
+    this->METHODSTRUCT = &methods_Object;
     return this;
 }
 void Object_destruct(Object * this)

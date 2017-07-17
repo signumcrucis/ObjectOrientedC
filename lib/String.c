@@ -14,7 +14,7 @@ int string_length(string this)
 
 string string_new(string value)
 {
-    string this = calloc(strlen(value), sizeof(char));
+    string this = calloc(strlen(value)+1, sizeof(char));
     strcpy(this, value);
     return this;
 }

@@ -13,14 +13,17 @@
 #define initalize(CLASS,...) CLASS##_construct( __VA_ARGS__)
 #define initalize_overloaded(CLASS,OVERLOADNAME,...) CLASS##_construct_##OVERLOADNAME ( __VA_ARGS__ )
 
-#define delete(CLASS,THIS) CLASS##_destruct( THIS ); free( THIS )
-#define finalize(CLASS,THIS) CLASS##_destruct( THIS )
+#define METHODSTRUCT _m
+
+#define delete(THIS) ( THIS )->METHODSTRUCT->destruct( THIS ); free( THIS ); THIS = NULL
+#define finalize(THIS) ( THIS )->METHODSTRUCT->destruct( THIS )
+
 
 // Define a class based on a struct called Class_[NAME]
 #define class(CLASS) typedef struct Class_##CLASS CLASS
 
 // to call a getter function
-#define get(INST,PROP) ( INST )->m->get_##PROP ( INST )
+#define get(INST,PROP) ( INST )->METHODSTRUCT->get_##PROP ( INST )
 
 // to generate an easy getter function
 #define getter(TYPE,CLASS,PROP) TYPE CLASS##_get_##PROP ( CLASS * this) //{return this-> PROP ;}
@@ -33,7 +36,7 @@
 
 
 // to call a setter function
-#define set(INST,PROP,VAL) ( INST )->m->set_##PROP ( INST , VAL )
+#define set(INST,PROP,VAL) ( INST )->METHODSTRUCT->set_##PROP ( INST , VAL )
 
 // to generate an easy setter function
 #define setter(TYPE,CLASS,PROP) void CLASS##_set_##PROP ( CLASS * this, TYPE value) //{ this-> PROP = value ;}
@@ -44,18 +47,20 @@
 // To be installed in the struct of the methods
 #define ptr_setter(TYPE,CLASS,PROP) void (*set_##PROP ) ( CLASS * , TYPE );
 
-#define to_string(OBJECTPTR) ( ( OBJECTPTR )->m->toString( OBJECTPTR ) )
+#define to_string(OBJECTPTR) ( ( OBJECTPTR )->METHODSTRUCT->toString( OBJECTPTR ) )
 
-
+#define mcall(OBJECTPTR, METHODNAME, PARAMS...) (( OBJECTPTR )->METHODSTRUCT-> METHODNAME ( OBJECTPTR, PARAMS ) )
+#define mcall_noargs(OBJECTPTR, METHODNAME) (( OBJECTPTR )->METHODSTRUCT-> METHODNAME ( OBJECTPTR ) )
 // Object Class
 class(Object);
 
 struct Methods_Object{
     string (*toString) (Object *);
+    void (*destruct) (Object *);
 };
 
 struct Class_Object{
-    struct Methods_Object * m;
+    struct Methods_Object * METHODSTRUCT;
 };
 
 Object * Object_construct(Object * this);

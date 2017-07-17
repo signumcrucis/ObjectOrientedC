@@ -23,19 +23,19 @@ string Person_toString(Person * this)
     return this->name;
 }
 
+//CONSTRUCTORS
 struct Methods_Person methods_Person = { 
     vt_getter(Person, name)
     vt_getter(Person, age)
     vt_setter(Person, name)
     .toString = &Person_toString,
+    .destruct = &Person_destruct
 };
-
-//CONSTRUCTORS
 Person * Person_construct (Person * this, string name)
 {
     initalize(Object, &(this->base));
     this->name = string_new(name);
-    this->m = &methods_Person;
+    this->METHODSTRUCT = &methods_Person;
     return this;
 } 
 Person * Person_construct_si (Person * this, string name, int age)
@@ -48,5 +48,5 @@ void Person_destruct (Person * this)
 {
 
     string_delete(this->name);
-    finalize(Object, &(this->base));
-} 
+    finalize(&(this->base));
+}

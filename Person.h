@@ -12,13 +12,15 @@ struct Methods_Person
     ptr_getter(int, Person, age);
 
     ptr_setter(string, Person, name);
+
+    void (*destruct)(Person * this);
     
 };
 
 struct Class_Person
 {
     Object base;
-    struct Methods_Person * m;
+    struct Methods_Person * METHODSTRUCT;
     string name;
     int age;
     //string (*getName) (Person *);
