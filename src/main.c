@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib/Class.h"
-#include "Person.h"
+#include "lib/Object.h"
 #include "lib/String.h"
+#include "Person.h"
+
 
 
 int main ()

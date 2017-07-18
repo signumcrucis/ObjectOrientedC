@@ -1,7 +1,11 @@
-#include "Person.h"
+
 #include "lib/String.h"
+
 #include "lib/Class.h"
 
+#include "lib/Object.h"
+
+#include "Person.h"
 
 
 getter( Person, string, name ){

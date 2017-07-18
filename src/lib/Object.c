@@ -1,5 +1,6 @@
 #include "Class.h"
 #include "String.h"
+#include "Object.h"
 
 string method(Object, toString)
 {

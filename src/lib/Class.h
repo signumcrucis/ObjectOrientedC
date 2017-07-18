@@ -1,7 +1,7 @@
 
 #ifndef GUARD_CLASS
 #define GUARD_CLASS
-#include "String.h"
+
 
 
 
@@ -76,14 +76,7 @@
 
 #define vt_constructor_install(CLASS) this->METHODSTRUCT = &methods_##CLASS
 
-/* Object Class */
-class(Object);
-properties(Object);
-methods(Object);
-    string ptr_method(Object, toString);
-end;
 
-constructor(Object);
 
 
 #endif

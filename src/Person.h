@@ -1,6 +1,8 @@
+#ifndef GUARD_CLASS_PERSON
+#define GUARD_CLASS_PERSON
 #include "lib/String.h"
 #include "lib/Class.h"
-
+#include "lib/Object.h"
 
 class(Person);
 properties(Person);
@@ -23,3 +25,4 @@ constructor( Person,   string name );
 constructor_overloaded(Person, si,   string name, int age);
 //Person * Person_construct_si (Person * this, string name, int age);
 //void Person_destruct (Person * this);
+#endif
