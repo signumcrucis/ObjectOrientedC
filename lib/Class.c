@@ -1,23 +1,24 @@
 #include "Class.h"
 #include "String.h"
 
-
-
-string Object_toString(Object * this)
+string method(Object, toString)
 {
     return "Object";
 }
 
-struct Methods_Object methods_Object = {
-    .toString = &Object_toString,
-    .destruct = &Object_destruct,
-};
-Object * Object_construct(Object * this)
+destructor(Object)
 {
-    this->METHODSTRUCT = &methods_Object;
-    return this;
+    /*nothing to destroy*/
 }
-void Object_destruct(Object * this)
+
+/* the vtable */
+vt_init(Object)
+    vt_method(Object,toString) /*install the toString pointer*/
+end
+
+constructor(Object)
 {
-    
+    vt_constructor_install(Object); /*add the vtable into the object instance*/
+
+    return this;
 }

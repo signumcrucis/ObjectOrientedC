@@ -1,33 +1,25 @@
 #include "lib/String.h"
 #include "lib/Class.h"
 
-//typedef struct Class_Person Person;
+
 class(Person);
-struct Methods_Person
-{
-    string (*toString) (Person *);
-
-    ptr_getter(string, Person, name);
-    
-    ptr_getter(int, Person, age);
-
-    ptr_setter(string, Person, name);
-
-    void (*destruct)(Person * this);
-    
-};
-
-struct Class_Person
-{
+properties(Person);
     Object base;
-    struct Methods_Person * METHODSTRUCT;
     string name;
     int age;
-    //string (*getName) (Person *);
-};
+methods(Person);
+    ptr_getter( Person,string, name);
+    
+    ptr_getter(Person, int, age);
+
+    ptr_setter(Person, string, name);
+
+    string ptr_method(Person, toString);
+end;
 
 
-Person * Person_construct (Person * this, string name);
-Person * Person_construct_si (Person * this, string name, int age);
-void Person_destruct (Person * this);
-//constructor(Person) (Person * this, char * name);
+
+constructor( Person,   string name );
+constructor_overloaded(Person, si,   string name, int age);
+//Person * Person_construct_si (Person * this, string name, int age);
+//void Person_destruct (Person * this);
