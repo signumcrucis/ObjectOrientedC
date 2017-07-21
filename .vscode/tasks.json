@@ -1,0 +1,7 @@
+{
+    "version": "0.1.0",
+    "command": "C:\\MinGW\\bin\\gcc",
+    "isShellCommand": true,
+    "showOutput": "always",
+    "args": ["-g", "src\\*.h", "src\\*.c", "src\\lib\\*.h", "src\\lib\\*.c"]
+}

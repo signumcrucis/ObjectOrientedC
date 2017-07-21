@@ -7,13 +7,17 @@
 
 
 
-int main ()
+int main (int argc, char *argv[])
 {
+
+    
     /* Stack : initalize/finalize*/
     Person p1;
     initalize(Person, &p1, "bob");
     printf("p1 name: %s\n", get(&p1,name));
     finalize( &p1 );
+
+    
 
     /* Heap: new/delete*/
     Person * p2 = new(Person, "joe");
@@ -33,6 +37,6 @@ int main ()
     printf("Object %s\n", mcall(o, toString));
     delete( o );
     
-
+    
     return 0;
 }

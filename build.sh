@@ -1,0 +1,1 @@
+gcc -g src/lib/*.c src/lib/*.h src/*.h src/*.c

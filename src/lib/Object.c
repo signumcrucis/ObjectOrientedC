@@ -19,6 +19,7 @@ end
 
 constructor(Object)
 {
+    clear_class_memory(Object, this);
     vt_constructor_install(Object); /*add the vtable into the object instance*/
 
     return this;

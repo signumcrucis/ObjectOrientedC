@@ -3,7 +3,10 @@
 #define GUARD_CLASS
 
 
+#define clear_class_memory(CLASS, POINTER) memset ( POINTER , 0, sizeof( struct Class_##CLASS ) )
 
+
+#define new_array(TYPE,NUM) calloc(NUM, sizeof( TYPE ))
 
 #define new(CLASS,PARAMS...) CLASS##_construct( (( CLASS * ) calloc(1, sizeof( CLASS ))) , ## PARAMS )
 #define new_overloaded(CLASS,OVERLOADNAME,...) CLASS##_construct_##OVERLOADNAME ( (( CLASS * ) calloc(1, sizeof( CLASS ))) , __VA_ARGS__ )
@@ -75,6 +78,7 @@
 
 
 #define vt_constructor_install(CLASS) this->METHODSTRUCT = &methods_##CLASS
+
 
 
 

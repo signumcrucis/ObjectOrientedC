@@ -37,6 +37,7 @@ end
 
 constructor( Person,   string name )
 {
+    clear_class_memory(Object, this);
     initalize(Object, &(this->base));
     this->name = string_new(name);
     vt_constructor_install(Person);
